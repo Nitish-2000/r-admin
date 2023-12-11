@@ -49,11 +49,13 @@ function Sidebar() {
 
 {/* <!-- Nav Item - Utilities Collapse Menu --> */}
 <li className="nav-item">
-    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-        aria-expanded="true" aria-controls="collapseUtilities">
+    
+        <Link to="/nested-example">
         <i className="fas fa-fw fa-wrench"></i>
-        <span>View user</span>
-    </a>
+        <span style={{color:"white"}}>View user</span>
+        </Link>
+       
+    
     
 </li>
 
@@ -62,8 +64,18 @@ function Sidebar() {
 
 {/* <!-- Heading --> */}
 <div className="sidebar-heading">
-    Addons
+    <span style={{color:'black'}}>Hooks</span>
 </div>
+<li className="nav-item">
+    {/* <a className="nav-link collapsed" href="#" 
+        aria-expanded="true" aria-controls="collapseUtilities"> */}
+        <Link to="/useref">
+        <i className="fas fa-fw fa-wrench"></i>
+        <span style={{color:"white"}}>UseRef</span>
+        </Link>
+       
+    {/* </a> */}
+    </li>
 
 {/* <!-- Nav Item - Pages Collapse Menu --> */}
 

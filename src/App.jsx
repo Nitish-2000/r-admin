@@ -2,8 +2,14 @@ import Sidebar from './Components/Sidebar';
 import Dashboard from './Components/Dashboard'
 import Create from './Components/Create'
 import Edit from  './Components/Edit'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route, Navigate} from 'react-router-dom'
 import { useState } from 'react';
+import Index from "./Components/Nested-Elements/Index"
+import Accounts from "./Components/Nested-Elements/Accounts"
+import Products from "./Components/Nested-Elements/Products"
+import Receipts from './Components/Nested-Elements/Receipts';
+import Staff from "./Components/Nested-Elements/Staff";
+import Useref from "./Components/Hooks/Useref";
 function App() {
  
 let  [data,setData]= useState([
@@ -32,6 +38,14 @@ let  [data,setData]= useState([
         <Route path="/dashboard" element={<Dashboard data={data} setData={setData}/>}></Route>
         <Route path="/create" element={<Create data={data} setData={setData}/>}/>
         <Route path="/edit" element={<Edit/>}/>
+        <Route path="/*" element={<Navigate to='/dashboard'/>}/>
+        <Route path="/nested-example" element={<Index/>}>
+        <Route path="accounts" element={<Accounts/>}/>
+        <Route path="product" element={<Products/>}/>
+        <Route path = "receipts" element={<Receipts/>}/>
+        <Route path="staff" element={<Staff/>}/>
+        </Route>
+        <Route path="useref" element={<Useref/>}/>
       </Routes>
       </BrowserRouter>
         

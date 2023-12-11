@@ -6,7 +6,6 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 function Dashboard({data,setData}) {
-  console.log(data);
     let dashboarddata=[
         {
 

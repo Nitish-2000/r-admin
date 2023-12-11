@@ -1,0 +1,14 @@
+.liststyle{
+    display: flex;
+    list-style: none;
+}
+.liststyle li{
+    color:black;
+    border : 1px solid  black;
+    /* margin: 2px; */
+    padding: 3px;
+    cursor: pointer;
+}
+.liststyle li.active{
+    background-color: aqua;
+}
