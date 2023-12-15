@@ -4,6 +4,7 @@ import React from 'react'
 import Tile from './Tile'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard({data,setData}) {
     let dashboarddata=[
@@ -32,6 +33,8 @@ function Dashboard({data,setData}) {
             value:"18"
         }
     ]
+    const navigate = useNavigate()
+
     let   handleDelete = (index)=>{
       let newArray = [...data];//deep copy
       newArray.splice(index,1);
@@ -91,7 +94,8 @@ function Dashboard({data,setData}) {
             <td>{e.mobile}</td>
             <td>{e.batch}</td>
             <td>
-            <Button variant="primary">EDIT</Button>
+            <Button variant="primary" onClick={()=>
+            navigate(`/edit/${i}`)} >EDIT</Button>
              {"\t"} 
             <Button variant="danger" onClick={()=>handleDelete(i)}>DELETE</Button>
             </td>

@@ -1,32 +1,25 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { useState } from 'react'
+// import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
+import {Formik} from 'formik'
+import * as Yup from 'yup';
 
 function Create({data,setData}) {
-  let [name,setName] =useState("")
-  let [username,setUserName] =useState("")
-  let [email,setEmail] =useState("")
-  let [mobile,setMobile] =useState("")
-  let [batch,setBatch] =useState("")
-  let navigate = useNavigate();
-  console.log(batch);
+ 
+  const UserSchema = Yup.object().shape({
+    name:Yup.string("Name must be letters").required('* required'),
+    username:Yup.string().required('* required').min(5),
+    email:Yup.string().required('* required').email('Invalid Email'),
+    mobile:Yup.string().required('* required').matches(/^\d{10}$/,'Invalid Mobile'),
+    batch:Yup.string()
 
-  let handleSave = ()=>{
-    let newarray2 = [...data];
-    newarray2.push({
-      name,
-      username,
-      email,
-      mobile,
-      batch
-    })
-    setData(newarray2);
-    navigate('/dashboard')
-  }
+  })
+  let navigate = useNavigate();
 
   
   return <>
@@ -37,40 +30,111 @@ function Create({data,setData}) {
                                 className="fas fa-download fa-sm text-white-50"></i> Generate Report</a> */}
                     </div>
                     <div className="row">
-                    <Form>
+                    <Formik  
+                    initialValues={
+                      {name:"",
+                      username:"",
+                      email:"",
+                      mobile:"",
+                      batch:""}}
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Name" onChange={(e)=>setName(e.target.value)} />
-      </Form.Group>
+                      validationSchema={UserSchema}
 
-      
-      <Form.Group className="mb-3" >
-        <Form.Label>User Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Username" onChange={(e)=>setUserName(e.target.value)} />
-      </Form.Group>
+                     onSubmit={(values)=>{
+                   
+                   let newarray = [...data];
+                   newarray.push(values);
+                   setData(newarray);
+                   navigate('/dashboard');
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Enter Email" onChange={(e)=>setEmail(e.target.value)}/>
-      </Form.Group>
+                   }}
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Mobile</Form.Label>
-        <Form.Control type="text" placeholder="Enter mobile" onChange={(e)=>setMobile(e.target.value)}/>
-      </Form.Group>
+                    >
+                    {/* {({errors,touched,handleBlur,handlesubmit,handleChange,values})=>(
+                    <Form onSubmit={handlesubmit}>
 
-      <Form.Group className="mb-3" >
-        <Form.Label>Batch</Form.Label>
-        <Form.Control type="text" placeholder="Enter Batch" onChange={(e)=>setBatch(e.target.value)} />
-      </Form.Group>
+<Form.Group className="mb-3" >
+  <Form.Label>Name</Form.Label>
+  <Form.Control type="text" name ="name" placeholder="Enter Name" onBlur={handleBlur} onChange={handleChange}/>
+  {errors.name && touched.name? <div style={{color:'red'}}>{errors.name}</div>:null}
+</Form.Group>
 
-     
 
-      <Button variant="primary" type="submit" onClick={()=>handleSave()}>
-        Submit
-      </Button>
-    </Form>
+<Form.Group className="mb-3" >
+  <Form.Label>User Name</Form.Label>
+  <Form.Control type="text" name="username" placeholder="Enter Username" onBlur={handleBlur} onChange={handleChange}/>
+  {errors.username && touched.username? <div style={{color:'red'}}>{errors.username}</div>:null}
+
+</Form.Group>
+
+<Form.Group className="mb-3" >
+  <Form.Label>Email</Form.Label>
+  <Form.Control type="email" name="email" placeholder="Enter Email" onBlur={handleBlur} onChange={handleChange} />
+  {errors.email && touched.email? <div style={{color:'red'}}>{errors.email}</div>:null}
+
+</Form.Group>
+
+<Form.Group className="mb-3" >
+  <Form.Label>Mobile</Form.Label>
+  <Form.Control type="text" name="mobile" placeholder="Enter mobile" onBlur={handleBlur} onChange={handleChange} />
+  {errors.mobile && touched.mobile? <div style={{color:'red'}}>{errors.mobile}</div>:null}
+
+</Form.Group>
+
+<Form.Group className="mb-3" >
+  <Form.Label>Batch</Form.Label>
+  <Form.Control type="text" name="batch" placeholder="Enter Batch"  onBlur={handleBlur} onChange={handleChange} />
+  {errors.batch && touched.batch? <div style={{color:'red'}}>{errors.batch}</div>:null}
+
+</Form.Group>
+
+
+
+<Button variant="primary" type="submit" >
+  Submit
+</Button>
+</Form>
+                    )} */}
+                    {({ errors,touched,handleBlur,handleSubmit,handleChange})=>(
+            <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" name='name' placeholder="Enter Name" onBlur={handleBlur} onChange={handleChange}/>
+                {errors.name && touched.name ? <div style={{color:"red"}}>{errors.name}</div>:null}
+              </Form.Group>
+    
+              <Form.Group className="mb-3">
+                <Form.Label>User Name</Form.Label>
+                <Form.Control type="text" name='username' placeholder="Enter User Name" onBlur={handleBlur} onChange={handleChange}/>
+                {errors.username && touched.username ? <div style={{color:"red"}}>{errors.username}</div>:null}
+              </Form.Group>
+              
+            
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" name='email' placeholder="Enter email"  onBlur={handleBlur} onChange={handleChange}/>
+                {errors.email && touched.email ? <div style={{color:"red"}}>{errors.email}</div>:null}
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Mobile</Form.Label>
+                <Form.Control type="text" name='mobile' placeholder="Enter Mobile" onBlur={handleBlur} onChange={handleChange}/>
+                {errors.mobile && touched.mobile ? <div style={{color:"red"}}>{errors.mobile}</div>:null}
+              </Form.Group>
+    
+              <Form.Group className="mb-3">
+                <Form.Label>Batch</Form.Label>
+                <Form.Control type="text" name='batch' placeholder="Enter Batch" onBlur={handleBlur} onChange={handleChange}/>
+                {errors.batch && touched.batch ? <div style={{color:"red"}}>{errors.batch}</div>:null}
+              </Form.Group>
+    
+              <Button variant="primary" type='submit'>
+                Submit
+              </Button>
+            </Form>
+          )}
+                   
+                    </Formik>
+                 
                     </div>
   </div>
     

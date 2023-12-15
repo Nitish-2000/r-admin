@@ -37,7 +37,7 @@ let  [data,setData]= useState([
       <Routes>
         <Route path="/dashboard" element={<Dashboard data={data} setData={setData}/>}></Route>
         <Route path="/create" element={<Create data={data} setData={setData}/>}/>
-        <Route path="/edit" element={<Edit/>}/>
+        <Route path="/edit/:id" element={<Edit data={data} setData={setData}/>}/>
         <Route path="/*" element={<Navigate to='/dashboard'/>}/>
         <Route path="/nested-example" element={<Index/>}>
         <Route path="accounts" element={<Accounts/>}/>

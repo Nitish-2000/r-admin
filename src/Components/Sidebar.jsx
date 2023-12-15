@@ -41,7 +41,7 @@ function Sidebar() {
         aria-expanded="true" aria-controls="collapseTwo">
        <Link to='/create'>
        <i className="fas fa-fw fa-cog"></i>
-        <span style={{color:"white"}}>Add user</span>
+        <span style={{color:"white"}}>Create user</span>
        </Link>
     </div>
     
@@ -52,7 +52,7 @@ function Sidebar() {
     
         <Link to="/nested-example">
         <i className="fas fa-fw fa-wrench"></i>
-        <span style={{color:"white"}}>View user</span>
+        <span style={{color:"white"}}>view user</span>
         </Link>
        
     
