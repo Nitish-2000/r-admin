@@ -50,51 +50,7 @@ function Create({data,setData}) {
                    }}
 
                     >
-                    {/* {({errors,touched,handleBlur,handlesubmit,handleChange,values})=>(
-                    <Form onSubmit={handlesubmit}>
-
-<Form.Group className="mb-3" >
-  <Form.Label>Name</Form.Label>
-  <Form.Control type="text" name ="name" placeholder="Enter Name" onBlur={handleBlur} onChange={handleChange}/>
-  {errors.name && touched.name? <div style={{color:'red'}}>{errors.name}</div>:null}
-</Form.Group>
-
-
-<Form.Group className="mb-3" >
-  <Form.Label>User Name</Form.Label>
-  <Form.Control type="text" name="username" placeholder="Enter Username" onBlur={handleBlur} onChange={handleChange}/>
-  {errors.username && touched.username? <div style={{color:'red'}}>{errors.username}</div>:null}
-
-</Form.Group>
-
-<Form.Group className="mb-3" >
-  <Form.Label>Email</Form.Label>
-  <Form.Control type="email" name="email" placeholder="Enter Email" onBlur={handleBlur} onChange={handleChange} />
-  {errors.email && touched.email? <div style={{color:'red'}}>{errors.email}</div>:null}
-
-</Form.Group>
-
-<Form.Group className="mb-3" >
-  <Form.Label>Mobile</Form.Label>
-  <Form.Control type="text" name="mobile" placeholder="Enter mobile" onBlur={handleBlur} onChange={handleChange} />
-  {errors.mobile && touched.mobile? <div style={{color:'red'}}>{errors.mobile}</div>:null}
-
-</Form.Group>
-
-<Form.Group className="mb-3" >
-  <Form.Label>Batch</Form.Label>
-  <Form.Control type="text" name="batch" placeholder="Enter Batch"  onBlur={handleBlur} onChange={handleChange} />
-  {errors.batch && touched.batch? <div style={{color:'red'}}>{errors.batch}</div>:null}
-
-</Form.Group>
-
-
-
-<Button variant="primary" type="submit" >
-  Submit
-</Button>
-</Form>
-                    )} */}
+                    
                     {({ errors,touched,handleBlur,handleSubmit,handleChange})=>(
             <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
