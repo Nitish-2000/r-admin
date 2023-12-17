@@ -67,17 +67,29 @@ function Sidebar() {
     <span style={{color:'black'}}>Hooks</span>
 </div>
 <li className="nav-item">
-    {/* <a className="nav-link collapsed" href="#" 
-        aria-expanded="true" aria-controls="collapseUtilities"> */}
+<div className="nav-link collapsed"
+        aria-expanded="true" aria-controls="collapseTwo">
         <Link to="/useref">
         <i className="fas fa-fw fa-wrench"></i>
         <span style={{color:"white"}}>UseRef</span>
         </Link>
+        </div>
        
     {/* </a> */}
     </li>
 
 {/* <!-- Nav Item - Pages Collapse Menu --> */}
+<li className="nav-item">
+<div className="nav-link collapsed"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <Link to="/usereducer">
+        <i className="fas fa-fw fa-wrench"></i>
+        <span style={{color:"white"}}>UseReducer</span>
+        </Link>
+        </div>
+       
+    {/* </a> */}
+    </li>
 
 </ul>
   </>

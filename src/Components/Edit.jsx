@@ -76,6 +76,7 @@ const Edit= ({data,setData}) =>{
                    <Formik 
                    initialValues={initialValues}
                    validationSchema={editValidation}
+                   enableReinitialize={true}  // helps for re initializing value
                    onSubmit={(values)=>{
                     let newarray = [...data];
                     newarray.splice(params.id,1,values);

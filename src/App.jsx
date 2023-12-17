@@ -10,6 +10,7 @@ import Products from "./Components/Nested-Elements/Products"
 import Receipts from './Components/Nested-Elements/Receipts';
 import Staff from "./Components/Nested-Elements/Staff";
 import Useref from "./Components/Hooks/Useref";
+import UseReducer from './Components/UseReducer';
 function App() {
  
 let  [data,setData]= useState([
@@ -46,6 +47,7 @@ let  [data,setData]= useState([
         <Route path="staff" element={<Staff/>}/>
         </Route>
         <Route path="useref" element={<Useref/>}/>
+        <Route path='/usereducer' element={<UseReducer/>}/>
       </Routes>
       </BrowserRouter>
         
