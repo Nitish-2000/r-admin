@@ -1,38 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React,{useContext} from 'react'
 import Tile from './Tile'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import  { UserDataContext } from './context/UserContext';
+import { dashboardDataContext } from './context/DashboardDatacontext';
+import Logout from './Hooks/Logout';
+function Dashboard() {
+     let logout = Logout()
+    let {data,setData} = useContext(UserDataContext)
 
-function Dashboard({data,setData}) {
-    let dashboarddata=[
-        {
+    // console.log(data);
 
-            color:"primary",
-            title:"Earnings (Monthly)",
-            icon:"fa-calendar",
-            value:"$40,000"
-        },
-        {
-            color:"success",
-            title:"Earnings (Annual)",
-            icon:"fa-dollar-sign",
-            value:"$215,000"
-        },{
-            isProgress:true,
-            color:"info",
-            title:"Tasks",
-            icon:"fa-clipboard-list",
-            value:"50"
-        },{
-            color:"warning",
-            title:"Pending Requests",
-            icon:"fa-comments",
-            value:"18"
-        }
-    ]
+    let {dashboarddata}= useContext(dashboardDataContext)
     const navigate = useNavigate()
 
     let   handleDelete = (index)=>{
@@ -48,8 +30,7 @@ function Dashboard({data,setData}) {
         
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                className="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <button  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onClick={logout}> LogOut</button>
                     </div>
                     <div className="row">
                         {

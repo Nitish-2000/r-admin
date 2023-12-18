@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React,{useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react'
@@ -8,9 +8,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import {UserDataContext} from './context/UserContext';
 
-const Edit= ({data,setData}) =>{
+const Edit= () =>{
   // console.log(data);
+  let {data,setData}=useContext(UserDataContext)
     const navigate = useNavigate()
   let params = useParams()
   let [name,setName] =useState("");

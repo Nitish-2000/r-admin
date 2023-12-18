@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React,{useContext} from 'react'
 // import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import {Formik} from 'formik'
 import * as Yup from 'yup';
 
-function Create({data,setData}) {
+import { UserDataContext } from './context/UserContext';
+
+function Create() {
+  let {data,setData}= useContext(UserDataContext)
  
   const UserSchema = Yup.object().shape({
     name:Yup.string("Name must be letters").required('* required'),
